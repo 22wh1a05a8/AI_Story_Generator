@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Story Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* 🌟 Warm Yellow Theme 🌟 */
+        body {
+            background-color: #FFF8DC; /* Light yellow background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #333;
+        }
+        h1 {
+            color: #FFB300; /* Bright yellow-orange */
+        }
+        form {
+            margin-top: 20px;
+        }
+        .story-container {
+            background-color: #FFD700; /* Deep yellow */
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            margin: auto;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        .audio-container {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #FFCC33; /* Slightly darker yellow */
+            border-radius: 10px;
+        }
+        audio {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌟 AI Emotion-Based Story Generator 🌟</h1>
+    <form method="post">
+        <label for="emotion_input">Describe your feeling:</label>
+        <input type="text" id="emotion_input" name="emotion_input" required>
+        <button type="submit">Generate Story</button>
+    </form>
+
+    {% if story %}
+        <div class="story-container">
+            <h2>✨ Emotion Detected: {{ emotion }} ✨</h2>
+            <p>{{ story }}</p>
+        </div>
+
+        <div class="audio-container">
+            <h3>🔊 Listen to Your Story:</h3>
+            <audio controls>
+                <source src="{{ url_for('static', filename='story_audio.mp3') }}" type="audio/mpeg">
+                Your browser does not support audio playback.
+            </audio>
+        </div>
+
+    {% endif %}
+</body>
+</html>
